@@ -59,6 +59,9 @@ public class Drink {
 	@Column(name="value")
 	private Map<String, Integer> ingredients = new HashMap<>();
 
+	
+	private String filePath;
+	
 	 
 	public String getName() {
 		return this.name;

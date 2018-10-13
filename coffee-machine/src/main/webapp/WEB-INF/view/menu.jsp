@@ -125,7 +125,7 @@
 
 						<!-- Modal body -->
 						<div class="modal-body">
-							<form:form action="/coffee/drink/add" method="post" modelAttribute="drink">
+							<form:form action="/coffee/drink/add" method="post" modelAttribute="drink" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="name">Drink Name:</label>
 									<form:input path="name" cssClass="form-control" id="name"></form:input>
@@ -141,12 +141,6 @@
 								</div>
 								<div class="form-group">
 
-									<%--   	<form:select id="ingredients" path="ingredients[${ingr.key}]"  cssClass="custom-select">
-  		<form:option value="">--select--</form:option>
-  		 <form:options items="${drink.ingredients}" />  
-  	</form:select>  
- --%>
-
 									<c:forEach items="${drink.ingredients}" var="ingr">
 
 										<label class="form-check-label" for="i">${ingr.key }</label>
@@ -157,7 +151,11 @@
 									</c:forEach>
 
 								</div>
-
+								
+<div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile" name="file">
+    <label class="custom-file-label" for="customFile">Choose image</label>
+  </div>
 
 								<div class="form-group form-check">
 									<label class="form-check-label"> <input
