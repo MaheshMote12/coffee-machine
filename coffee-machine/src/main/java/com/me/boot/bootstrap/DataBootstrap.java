@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import com.me.boot.model.Drink;
 import com.me.boot.model.Inventory;
-import com.me.boot.model.Menu;
 import com.me.boot.repository.DrinkRepository;
 import com.me.boot.repository.InventoryRepository;
 
@@ -80,21 +79,4 @@ public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent>
 		
 	}
 
- 
-	private void menu() {
-
-		Menu coffee = new Menu();
-		coffee.setCost(2.75);
-		coffee.setName("coffee");
-		
-
-		Menu cappuccino = new Menu();
-		cappuccino.setCost(2.90);
-		cappuccino.setName("cappuccino");
-		
-		Menu caffeMocha = new Menu();
-		caffeMocha.setCost(3.90);
-		caffeMocha.setName("caffe mocha");
-	}
- 
 }

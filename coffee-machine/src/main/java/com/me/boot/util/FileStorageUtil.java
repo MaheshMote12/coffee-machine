@@ -7,8 +7,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Component;
@@ -19,15 +21,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileStorageUtil implements FileStorage {
 
 	private final Path rootLocation = Paths.get("filestorage").resolve("images");
-	 
+	private static int fileCount = 0; 
 	
 	@Override
-	public void store(MultipartFile file) {
+	public String store(MultipartFile file) {
 
 		try {
-			Files.copy(file.getInputStream(), rootLocation.resolve(file.getOriginalFilename()));
+				Files.copy(file.getInputStream(), rootLocation.resolve(String.valueOf(fileCount).concat( file.getOriginalFilename())));
+				
+				String savedFileName = String.valueOf(fileCount).concat( file.getOriginalFilename()).toString();
+				fileCount++;
+				return savedFileName;
+			
 		} catch (IOException e) {
-			throw new RuntimeException("FAIL! -> message = " + e.getMessage());
+			throw new RuntimeException("FAIL! -> message! = " + e.getMessage());
 		}
 	}
 
@@ -61,7 +68,9 @@ public class FileStorageUtil implements FileStorage {
 		String realPath = session.getServletContext().getRealPath("/");
 			
 		try {
-			Files.createDirectories(rootLocation);
+			if(!Files.exists(rootLocation)) {
+				Files.createDirectories(rootLocation);
+			}
 		} catch (IOException e) {
 			 throw new RuntimeException("Could not initialize storage!");
 		}

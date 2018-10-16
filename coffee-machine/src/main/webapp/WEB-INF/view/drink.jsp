@@ -8,8 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Coffee dispensing machine</title>
 </head>
-<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://afeld.github.io/emoji-css/emoji.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <script
@@ -23,54 +25,64 @@
 <body>
 
 	<div class="container">
-	<jsp:include page="../view/fragments/nav.jsp" />
-	
-	
+		<jsp:include page="../view/fragments/nav.jsp" />
+
+
 		<div class="card">
 
 			<div class="card-header  bg-danger">
-				<h1><i>Your Order Details</i></h1>
+				<h1>
+					<i>Your Order Details</i>
+				</h1>
 			</div>
 
 			<div class="card-body ">
 
 				<div class="row">
-				
-					<h2><i>Please collect your bill</i></h2>
-				</div>	
+
+					<h2>
+						<i>Please collect your bill</i>
+					</h2>
+				</div>
 				<div class="row">
 					<div class="form-group">
-						<label ><i>Drink Name:</i></label>  
-						<label ><i>${drink.name}</i></label> 
+						<label><i>Drink Name:</i></label> <label><i>${drink.name}</i></label>
 					</div>
-		
-				</div>
-		
-		<div class="row">
-					<div class="form-group">
-						<label for="order-code"><i>Amount:</i></label> <span> <i>${drink.cost}</i> <i class="fa fa-inr"></i></span>
-					</div>
-		</div>
 
-<div class="row">
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="order-code"><i>Amount:</i></label> <span> <i>${drink.cost}</i>
+							<i class="fa fa-inr"></i></span>
+					</div>
+					
+					<div class=" col-md-6">
+						<img alt="coffee" class="col-md-6" src="/coffee/drink/multipart/${drink.filePath}" >
+					</div>
+				</div>
+
+				<div class="row">
 					<div class="form-group">
-						<label for="order-code"><i>This ${drink.name} contains:</i></label>
+						<label for="order-code"><i>This ${drink.name}
+								contains:</i></label>
 						<c:forEach items="${drink.ingredients}" var="ingredient">
 
 							<ul>
-								<li> <i>${ingredient.key} </i></li>
-									<i>${ingredient.value} Units</i>
+								<li><i>${ingredient.key} </i></li>
+								<i>${ingredient.value} Units</i>
 							</ul>
 						</c:forEach>
 					</div>
-</div>
-
 				</div>
-			<a class="btn btn-outline-danger" href="/coffee/">Check-out our other awesome drinks!</a>
+
 			</div>
-			
-			
+			<a class="btn btn-outline-danger" href="/coffee/">Check-out our
+				other awesome drinks!</a>
 		</div>
+
+
+	</div>
 
 
 </body>

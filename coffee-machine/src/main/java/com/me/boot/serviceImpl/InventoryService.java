@@ -43,4 +43,9 @@ public class InventoryService implements Iinventory  {
 		inventoryRepo.save(inventory);
  	}
 
+	@Override
+	public List<String> getAllItems() {
+		return inventoryRepo.getAllItems();
+	}
+
 }

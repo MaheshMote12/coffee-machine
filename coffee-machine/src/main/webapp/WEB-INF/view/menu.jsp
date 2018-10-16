@@ -222,10 +222,12 @@
 					</c:forEach>
 				</table>
 
+			${msg}
+
 			</div>
 		</div>
 	</div>
-
+	
 
 </body>
 </html>

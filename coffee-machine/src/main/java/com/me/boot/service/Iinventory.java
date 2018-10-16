@@ -1,5 +1,6 @@
 package com.me.boot.service;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Iinventory {
@@ -18,4 +19,6 @@ public interface Iinventory {
 	 * @param amount the quantity to reduce by
 	 */
 	void deduct(String name, Integer amount);
+	
+	List<String> getAllItems();
 }
