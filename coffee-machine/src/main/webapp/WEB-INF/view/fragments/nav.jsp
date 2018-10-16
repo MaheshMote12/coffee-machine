@@ -33,7 +33,7 @@
     
      <!-- SWAGGER -->
      <li class="nav-item">
-      <a class="nav-link" href="#" >Swagger</a>
+      <a class="nav-link" href="/swagger-ui.html" >Swagger</a>
     </li> 
     
   </ul>

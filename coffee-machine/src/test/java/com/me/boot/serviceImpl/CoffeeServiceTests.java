@@ -15,6 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.me.boot.bootstrap.DataBootstrap;
+import com.me.boot.dto.DrinkDto;
+import com.me.boot.mapper.DrinkDtoToDrink;
+import com.me.boot.mapper.DrinkToDrinkDtoMapper;
 import com.me.boot.model.Drink;
 import com.me.boot.repository.DrinkRepository;
 import com.me.boot.repository.InventoryRepository;
@@ -34,15 +37,21 @@ public class CoffeeServiceTests {
 	@MockBean
 	InventoryService inventoryUtil;
 	
+	@MockBean
+	private DrinkToDrinkDtoMapper toDto;
+	
 	@Autowired
 	InventoryRepository inventoryRepo;
 	
 	@Autowired
 	TestEntityManager entityManager;
 
+	@MockBean
+	private DrinkDtoToDrink toDrink;
+
 	@Before
 	public void setUp() {
-		this.machine = new CoffeeService(this.inventoryUtil,   this.drinkRepo);
+		this.machine = new CoffeeService(this.inventoryUtil,   this.drinkRepo, this.toDto, toDrink);
 	
 //		inserting data in h2
 		DataBootstrap db = new DataBootstrap(  inventoryRepo, this.drinkRepo);
@@ -53,8 +62,8 @@ public class CoffeeServiceTests {
 	@Test
 	public void getMenu() {
 		
-		List<Drink> menu = machine.getMenu();
-		assertThat(menu).hasSize(3);
+		  List<DrinkDto> menu = machine.getMenu();
+		  assertThat(menu).hasSize(3);
 	}
 
 	@Test

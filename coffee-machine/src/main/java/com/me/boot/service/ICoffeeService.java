@@ -1,14 +1,13 @@
 package com.me.boot.service;
 
 import java.util.List;
-import java.util.Map;
 
-import com.me.boot.model.Drink;
+import com.me.boot.dto.DrinkDto;
 
 public interface ICoffeeService { 
 	
 	
-	public List<Drink> getMenu();
+	public List<DrinkDto> getMenu();
 
 	/**
 	 * Make a drink using the given name. Ingredients for the drink are deducted from the inventory.
@@ -16,6 +15,10 @@ public interface ICoffeeService {
 	 * @param name the name of the drink
 	 */
 	
-	public Drink makeDrink(Long drinkId);
+	public DrinkDto makeDrink(Long drinkId);
+	
+	public DrinkDto saveDrink(DrinkDto drink);
+	
+	public DrinkDto findOne(Long drinkId);
 
 }

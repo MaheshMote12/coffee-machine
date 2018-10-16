@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.me.boot.dto.DrinkDto;
 import com.me.boot.model.Drink;
 import com.me.boot.model.Inventory;
 import com.me.boot.repository.DrinkRepository;
@@ -59,9 +60,9 @@ public class CoffeeMachineController {
 	@GetMapping("/drink/{drinkId}")
 	public String makeDrink( Model model, @PathVariable("drinkId") Long drinkId) {
 		
-		Drink drink = coffeeService.makeDrink(drinkId);
+		 DrinkDto drink = coffeeService.makeDrink(drinkId);
 			
-		model.addAttribute("drink", drink);
+		 model.addAttribute("drink", drink);
 		
 		return "drink";
 	}
@@ -69,8 +70,9 @@ public class CoffeeMachineController {
 	@GetMapping(value= {"/", ""})
 	public String getMenu( Model model) {
 		
-		List<Drink> menu = coffeeService.getMenu();
-		model.addAttribute("menu", menu);
+		 List<DrinkDto> menu = coffeeService.getMenu();
+		
+		 model.addAttribute("menu", menu);
 		
 //		Map<String, Integer> ingredients = inventoryService.getIngredients();
 //		Set<String> keySet = ingredients.keySet();
