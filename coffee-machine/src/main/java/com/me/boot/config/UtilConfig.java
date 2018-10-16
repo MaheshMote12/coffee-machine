@@ -1,4 +1,4 @@
-package com.me.boot;
+package com.me.boot.config;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;

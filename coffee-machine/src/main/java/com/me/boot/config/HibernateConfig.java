@@ -1,4 +1,4 @@
-package com.me.boot;
+package com.me.boot.config;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
